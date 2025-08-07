@@ -6,7 +6,8 @@ return {
 		local lazy_status = require("lazy.status")
 
 		local colors = {
-			bg = "#282828",
+			-- bg = "#282828",
+			bg = "#1f1f1f",
 			fg = "#ebdbb2",
 			inactive_bg = "#1d2021",
 			red = "#ff5c5c",
@@ -56,8 +57,8 @@ return {
 		lualine.setup({
 			options = {
 				theme = my_lualine_theme,
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
+				-- section_separators = { left = "", right = "" },
+				-- component_separators = { left = "", right = "" },
 			},
 			sections = {
 				lualine_x = {

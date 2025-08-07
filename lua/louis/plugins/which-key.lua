@@ -11,6 +11,7 @@ return {
 				{ "<leader>g", group = "Git" },
 				{ "<leader>b", group = "Buffers" },
 				{ "<leader>h", group = "Harpoon" },
+				{ "<leader>n", group = "Notifications" },
 			},
 		},
 	},

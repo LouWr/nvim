@@ -6,9 +6,13 @@ return {
 		dark_style_background = "default",
 		on_colors = function(colors)
 			-- Set backgrounds to black and darker shades
-			colors.bg = "#282828" -- Background color
-			colors.bg_dark = "#1d2021" -- Darker background color
-			colors.bg_darker = "#1c2024" -- Even darker background for variation
+			-- colors.bg = "#282828" -- Background color
+			-- colors.bg_dark = "#1d2021" -- Darker background color
+			-- colors.bg_darker = "#1c2024" -- Even darker background for variation
+
+			colors.bg = "NONE" -- Background color
+			colors.bg_dark = "NONE" -- Darker background color
+			colors.bg_darker = "NONE" -- Even darker background for variation
 
 			-- Foreground colors
 			colors.fg = "#ebdbb2" -- Light foreground color

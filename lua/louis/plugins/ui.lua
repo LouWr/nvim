@@ -160,11 +160,11 @@ return {
 			vim.notify = notify
 
 			-- Keybindings for notification management
-			vim.keymap.set("n", "<leader>un", function()
+			vim.keymap.set("n", "<leader>nd", function()
 				notify.dismiss({ silent = true, pending = true })
 			end, { desc = "🔕 Dismiss all notifications" })
 
-			vim.keymap.set("n", "<leader>uN", function()
+			vim.keymap.set("n", "<leader>nn", function()
 				require("telescope").extensions.notify.notify({
 					layout_strategy = "horizontal",
 					sorting_strategy = "ascending",
