@@ -35,6 +35,16 @@ keymap.set("n", "<leader>rf", ":%s/", { desc = "Search and replace in the curren
 -- add keymaping for showing information on methods
 keymap.set("n", "<C-i>", ":lua vim.lsp.buf.hover()<CR>", { desc = "Show information on methods" })
 
+-- explicit lowercase alias for home command
+vim.api.nvim_create_user_command("Home", function()
+    require("snacks").dashboard()
+end, { desc = "Open Dashboard" })
+
+-- still used to old alpha greeter
+vim.api.nvim_create_user_command("Alpha", function()
+    require("snacks").dashboard()
+end, { desc = "Open Dashboard" })
+
 -- recenter on move
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
