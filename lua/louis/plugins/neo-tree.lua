@@ -1,18 +1,34 @@
 return {
-	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v3.x",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-		"nvim-tree/nvim-web-devicons", -- optional, but recommended
-	},
-	lazy = false, -- neo-tree will lazily load itself
-	keys = {
-		{
-			"<C-e>",
-			-- "<leader>e",
-			"<cmd>Neotree toggle<CR>",
-			desc = "Toggle Neo-tree Explorer",
-		},
-	},
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    lazy = false,                -- neo-tree will lazily load itself
+    keys = {
+        {
+            "<C-e>",
+            -- "<leader>e",
+            "<cmd>Neotree toggle<CR>",
+            desc = "Toggle Neo-tree Explorer",
+        },
+    },
+    config = function()
+        require("neo-tree").setup({
+            window = {
+                winblend = 0, -- Set to 0 for full transparency
+            },
+        })
+
+        -- Set transparent backgrounds for Neo-tree
+        vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeStatusLine", { bg = "NONE" })
+        vim.api.nvim_set_hl(0, "NeoTreeStatusLineNC", { bg = "NONE" })
+    end,
 }

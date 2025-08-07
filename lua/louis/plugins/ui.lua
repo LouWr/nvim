@@ -151,7 +151,7 @@ return {
 				on_open = function(win)
 					vim.api.nvim_win_set_config(win, {
 						border = "rounded",
-						winblend = 10,
+						winblend = 0,
 					})
 				end,
 			})
