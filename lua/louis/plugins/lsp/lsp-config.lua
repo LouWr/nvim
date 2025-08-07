@@ -1,0 +1,56 @@
+return {
+    {
+        "mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    {
+        "mason-lspconfig.nvim",
+        -- add the capabilities from blink cmp to here? check teej video on this
+        config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "ts_ls",
+                },
+            })
+        end,
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local lspconfig = require("lspconfig")
+
+            -- Server setups
+            lspconfig.lua_ls.setup({})
+            lspconfig.ts_ls.setup({})
+
+            -- Set up keymaps and attach on buffer
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function(ev)
+                    local map = function(keys, func, desc, mode)
+                        mode = mode or "n"
+                        vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
+                    end
+
+                    local opts = { buffer = ev.buf }
+
+                    -- keymaps for my lsp
+                    map("<C-i>", vim.lsp.buf.hover, "Hover Info")
+                    map("<C-p>", vim.diagnostic.open_float, "Show Diagnostic")
+                    map("gR", vim.lsp.buf.rename, "[R]e[n]ame")
+                    map("ga", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+                    map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+                    map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+                    map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+                    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+                    map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
+                    map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
+                    map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+                end,
+            })
+        end,
+    },
+}
