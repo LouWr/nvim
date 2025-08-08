@@ -3,7 +3,8 @@ return {
 	event = "VeryLazy",
 	opts = {
 		-- Enhanced labels to handle many matches
-		labels = "asdfghjklqwertyuiopzxcvbnm1234567890",
+		-- labels = "asdfghjklqwertyuiopzxcvbnm1234567890",
+		labels = "asdfghjklqwertyuiopzxcvbnm",
 
 		-- Multi-character labels when single chars run out
 		label = {

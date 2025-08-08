@@ -22,8 +22,21 @@ return {
 				enabled = true,
 				exclude = { "latex" },
 			},
+			rename = {
+				enabled = true,
+			},
+			explorer = {
+				enabled = true,
+			},
 			picker = {
 				enabled = false,
+				sources = {
+					explorer = {
+						layout = {
+							layout = {},
+						},
+					},
+				},
 			},
 			image = {
 				enabled = true,
@@ -57,14 +70,6 @@ return {
 				enabled = true,
 				-- Custom header text
 				preset = {
-					header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-					]],
 					-- Custom dashboard keys
 					keys = {
 						{
@@ -168,6 +173,7 @@ return {
 				},
 			},
 		},
+
 		-- NOTE: Keymaps
 		keys = {
 			{
@@ -184,8 +190,9 @@ return {
 				end,
 				desc = "Lazygit Logs",
 			},
+			-- quick rename
 			{
-				"<leader>rN",
+				"<leader>rn",
 				function()
 					require("snacks").rename.rename_file()
 				end,
@@ -235,6 +242,13 @@ return {
 					require("snacks").picker.help()
 				end,
 				desc = "Help Pages",
+			},
+			{
+				"<C-e>",
+				function()
+					require("snacks").explorer.open()
+				end,
+				desc = "Open",
 			},
 		},
 	},
