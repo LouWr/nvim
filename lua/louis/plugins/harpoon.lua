@@ -1,7 +1,7 @@
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "rcarriga/nvim-notify" },
 	config = function()
 		-- -- harpoon
 		local harpoon = require("harpoon")
@@ -11,13 +11,19 @@ return {
 		local telescope = require("telescope")
 		telescope.load_extension("harpoon")
 
+		-- set up notifications
+		local notify = require("notify")
+
 		-- Set transparent backgrounds for Harpoon UI
 		vim.api.nvim_set_hl(0, "HarpoonWindow", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "HarpoonBorder", { bg = "NONE" })
 
 		-- add to harpoon list
 		vim.keymap.set("n", "<leader>ha", function()
+			local file = vim.fn.expand("%:p")
+			local name = vim.fn.fnamemodify(file, ":t")
 			harpoon:list():add()
+			notify("🎯 Added to Harpoon: " .. name, "info", { title = "Harpoon", timeout = 2000 })
 		end, { desc = "Add to Harpoon list" })
 
 		-- view the harpoon list using telescope with same styling as find_files
