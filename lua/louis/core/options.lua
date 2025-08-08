@@ -35,5 +35,6 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true -- vertical splits go to right
 opt.splitbelow = true
 
+-- change the floating windows to match my color theme - lazygit
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c2024" }) -- a dark background matching your theme
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1c2024", fg = "#5c5c5c" })
