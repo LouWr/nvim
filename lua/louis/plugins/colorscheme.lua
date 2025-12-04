@@ -107,22 +107,22 @@ return {
 			highlights.BlinkCmpSignatureHelpBorder = { bg = "NONE", fg = colors.grey_medium }
 
 			-- nvim-notify transparent backgrounds
-			highlights.NotifyBackground = { bg = "NONE" }
-			highlights.NotifyERRORBorder = { bg = "NONE", fg = colors.red }
-			highlights.NotifyWARNBorder = { bg = "NONE", fg = colors.yellow }
-			highlights.NotifyINFOBorder = { bg = "NONE", fg = colors.blue }
-			highlights.NotifyDEBUGBorder = { bg = "NONE", fg = colors.grey_medium }
-			highlights.NotifyTRACEBorder = { bg = "NONE", fg = colors.purple }
-			highlights.NotifyERRORTitle = { bg = "NONE", fg = colors.red }
-			highlights.NotifyWARNTitle = { bg = "NONE", fg = colors.yellow }
-			highlights.NotifyINFOTitle = { bg = "NONE", fg = colors.blue }
-			highlights.NotifyDEBUGTitle = { bg = "NONE", fg = colors.grey_medium }
-			highlights.NotifyTRACETitle = { bg = "NONE", fg = colors.purple }
-			highlights.NotifyERRORBody = { bg = "NONE", fg = colors.fg }
-			highlights.NotifyWARNBody = { bg = "NONE", fg = colors.fg }
-			highlights.NotifyINFOBody = { bg = "NONE", fg = colors.fg }
-			highlights.NotifyDEBUGBody = { bg = "NONE", fg = colors.fg }
-			highlights.NotifyTRACEBody = { bg = "NONE", fg = colors.fg }
+			-- highlights.NotifyBackground = { bg = "NONE" }
+			-- highlights.NotifyERRORBorder = { bg = "NONE", fg = colors.red }
+			-- highlights.NotifyWARNBorder = { bg = "NONE", fg = colors.yellow }
+			-- highlights.NotifyINFOBorder = { bg = "NONE", fg = colors.blue }
+			-- highlights.NotifyDEBUGBorder = { bg = "NONE", fg = colors.grey_medium }
+			-- highlights.NotifyTRACEBorder = { bg = "NONE", fg = colors.purple }
+			-- highlights.NotifyERRORTitle = { bg = "NONE", fg = colors.red }
+			-- highlights.NotifyWARNTitle = { bg = "NONE", fg = colors.yellow }
+			-- highlights.NotifyINFOTitle = { bg = "NONE", fg = colors.blue }
+			-- highlights.NotifyDEBUGTitle = { bg = "NONE", fg = colors.grey_medium }
+			-- highlights.NotifyTRACETitle = { bg = "NONE", fg = colors.purple }
+			-- highlights.NotifyERRORBody = { bg = "NONE", fg = colors.fg }
+			-- highlights.NotifyWARNBody = { bg = "NONE", fg = colors.fg }
+			-- highlights.NotifyINFOBody = { bg = "NONE", fg = colors.fg }
+			-- highlights.NotifyDEBUGBody = { bg = "NONE", fg = colors.fg }
+			-- highlights.NotifyTRACEBody = { bg = "NONE", fg = colors.fg }
 		end,
 	},
 	config = function(_, opts)

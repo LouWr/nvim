@@ -28,8 +28,13 @@ return {
 			explorer = {
 				enabled = true,
 			},
+			indent = {
+				enabled = true,
+			},
 			picker = {
 				enabled = true,
+				hidden = true,
+				-- ignored = true,
 				sources = {
 					explorer = {
 						layout = {

@@ -26,12 +26,11 @@ return {
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
-			preset = "default",
+			preset = "super-tab",
 			["<C-j>"] = { "select_next", "fallback" },
 			["<C-k>"] = { "select_prev", "fallback" },
-			-- ["<Tab>"] = { "accept", "fallback" },
-			["<C-enter>"] = { "accept", "fallback" },
-		},
+			["<Tab>"] = { "accept", "fallback" },
+			},
 
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
