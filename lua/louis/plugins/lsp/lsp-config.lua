@@ -1,12 +1,13 @@
 return {
 	{
-		"mason.nvim",
+		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
-		"mason-lspconfig.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
 		-- add the capabilities from blink cmp to here? check teej video on this
 		config = function()
 			require("mason-lspconfig").setup({
@@ -19,7 +20,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "saghen/blink.cmp" },
+		dependencies = { "saghen/blink.cmp", "williamboman/mason-lspconfig.nvim" },
 		opts = {
 			servers = {
 				lua_ls = {},
@@ -27,12 +28,19 @@ return {
 			},
 		},
 		config = function(_, opts)
-			local lspconfig = require("lspconfig")
+			-- Get Blink capabilities
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			-- Set up each server with Blink capabilities
+			-- Configure each server with the new vim.lsp.config API (Neovim 0.11+)
 			for server, server_opts in pairs(opts.servers) do
-				server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
-				lspconfig[server].setup(server_opts)
+				-- Merge capabilities into server options
+				server_opts.capabilities = capabilities
+
+				-- Use the new vim.lsp.config API
+				vim.lsp.config(server, server_opts)
+
+				-- Enable the server
+				vim.lsp.enable(server)
 			end
 
 			-- Global LSP keymaps (attach to each LSP buffer)
