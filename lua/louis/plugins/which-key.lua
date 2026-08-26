@@ -1,42 +1,34 @@
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
-	dependencies = {
-		"rcarriga/nvim-notify",
-	},
 	opts_extend = { "spec" },
 	opts = {
 		preset = "helix",
-		defaults = {},
 		spec = {
+			{ "<leader>s", group = "Search", mode = { "n", "v" } },
+			{ "<leader>r", group = "Replace", mode = { "n", "v" } },
+			{ "<leader>t", group = "Trouble", mode = { "n", "v" } },
+			{ "<leader>g", group = "Git", mode = { "n", "v" } },
+			{ "<leader>h", group = "Harpoon", mode = { "n", "v" } },
+			{ "<leader>n", group = "Notifications", mode = { "n", "v" } },
 			{
+				"<leader>b",
+				group = "Buffers",
 				mode = { "n", "v" },
-				{ "<leader>s", group = "Search" },
-				{ "<leader>r", group = "Replace" },
-				{ "<leader>t", group = "Trouble" },
-				{ "<leader>g", group = "Git" },
-				{ "<leader>b", group = "Buffers" },
-				{ "<leader>h", group = "Harpoon" },
-				{ "<leader>n", group = "Notifications" },
-
-				{
-					"<leader>b",
-					group = "buffer",
-					expand = function()
-						return require("which-key.extras").expand.buf()
-					end,
-				},
-				{
-					"<leader>w",
-					group = "windows",
-					proxy = "<c-w>",
-					expand = function()
-						return require("which-key.extras").expand.win()
-					end,
-				},
-				-- better descriptions
-				{ "gx", desc = "Open with system app" },
+				expand = function()
+					return require("which-key.extras").expand.buf()
+				end,
 			},
+			{
+				"<leader>w",
+				group = "Windows",
+				mode = { "n", "v" },
+				proxy = "<c-w>",
+				expand = function()
+					return require("which-key.extras").expand.win()
+				end,
+			},
+			{ "gx", desc = "Open with system app", mode = { "n", "v" } },
 		},
 	},
 	keys = {
@@ -56,7 +48,6 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local notify = require("notify")
 		local wk = require("which-key")
 		wk.setup(opts)
 		vim.cmd([[
@@ -67,14 +58,5 @@ return {
   highlight WhichKeyDesc guifg=#ebdbb2
   highlight WhichKeyValue guifg=#ff7f24
 ]])
-		if not vim.tbl_isempty(opts.defaults) then
-			notify(
-				"which-key: opts.defaults is deprecated. Please use opts.spec instead." .. "Warning",
-				"info",
-				{ title = "Which key", timeout = 2000 }
-			)
-			-- LazyVim.warn("which-key: opts.defaults is deprecated. Please use opts.spec instead.")
-			wk.register(opts.defaults)
-		end
 	end,
 }

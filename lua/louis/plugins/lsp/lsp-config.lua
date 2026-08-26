@@ -15,6 +15,7 @@ return {
 					"lua_ls",
 					"ts_ls",
 				},
+				automatic_enable = false,
 			})
 		end,
 	},
@@ -55,15 +56,15 @@ return {
 					-- Keymaps for LSP
 					map("<C-i>", vim.lsp.buf.hover, "Hover Info")
 					map("<C-p>", vim.diagnostic.open_float, "Show Diagnostic")
-					map("gR", vim.lsp.buf.rename, "[R]e[n]ame")
-					map("ga", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("<leader>rn", vim.lsp.buf.rename, "Rename")
+					map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
+					map("<leader>lr", require("telescope.builtin").lsp_references, "References")
+					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+					map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
-					map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
-					map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+					map("<leader>lo", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
+					map("<leader>lW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
+					map("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
 				end,
 			})
 		end,

@@ -19,8 +19,8 @@ return {
 				enabled = true,
 			},
 			quickfile = {
-				enabled = true,
-				exclude = { "latex" },
+				enabled = false,
+				exclude = { "latex", "markdown" },
 			},
 			rename = {
 				enabled = true,
@@ -30,6 +30,14 @@ return {
 			},
 			indent = {
 				enabled = true,
+				filter = function(buf)
+					return vim.bo[buf].buftype == "" and vim.bo[buf].filetype ~= "markdown"
+				end,
+				scope = {
+					filter = function(buf)
+						return vim.bo[buf].buftype == "" and vim.bo[buf].filetype ~= "markdown"
+					end,
+				},
 			},
 			picker = {
 				enabled = true,
@@ -46,6 +54,7 @@ return {
 			image = {
 				enabled = true,
 				doc = {
+					enabled = false,
 					float = true, -- show image on cursor hover
 					inline = false, -- show image inline
 					max_width = 50,
